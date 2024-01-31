@@ -23,8 +23,14 @@ const server = http.createServer((req, res) => {
     }
   }).then(({data}) => {
     let buildCount = data.workflow_runs.length
+    // console.log(data)
+    let recentRun = data.workflow_runs[0]
+    let buildStatus = "Red"
+    if (recentRun.conclusion != null && recentRun.conclusion == "success") {
+      buildStatus = "Green"
+    }
     res.end(`
-      Build: green,
+      Build: ${buildStatus},
       Velocity: ${buildCount},
       Volatility: TODO,
       Release Count: 
