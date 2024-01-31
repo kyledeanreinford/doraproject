@@ -10,25 +10,24 @@ const server = http.createServer((req, res) => {
   // Octokit.js
 // https://github.com/octokit/core.js#readme
   const octokit = new Octokit({
-    auth: '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'
+    auth: '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'
   });
 
-  octokit.request('GET /repos/{owner}/{repo}/actions/workflows', {
+  let workflowId = "84435048"
+  octokit.request(`GET /repos/{owner}/{repo}/actions/runs`, {
     owner: 'kyledeanreinford',
     repo: 'doraproject',
     headers: {
       'X-GitHub-Api-Version': '2022-11-28'
     }
   }).then(({data}) => {
-
-    let testVal = "TODO"
+    let buildCount = data.workflow_runs.length
     res.end(`
       Build: green,
-      Velocity: 1,
-      Volatility: 2,
+      Velocity: ${buildCount},
+      Volatility: TODO,
       Release Count: 
-      Raw Output: ${testVal}
-      foo: ${data}
+      workflow ID: ${data.workflow_runs[0].id}
       `
     )});
 });
