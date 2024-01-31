@@ -9,8 +9,9 @@ const server = http.createServer((req, res) => {
 
   // Octokit.js
 // https://github.com/octokit/core.js#readme
+  const auth = process.env.GH_AUTH
   const octokit = new Octokit({
-    auth: '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'
+    auth: auth
   });
 
   let workflowId = "84435048"
