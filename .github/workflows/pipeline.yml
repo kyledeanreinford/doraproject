@@ -19,3 +19,8 @@ jobs:
         env:
           GH_AUTH: ${{ vars.GH_AUTH }}
         run: npm test
+      - name: Archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: archive
+          path: .
