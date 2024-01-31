@@ -16,4 +16,6 @@ jobs:
       - name: Run npm
         run: npm install
       - name: Run tests
+        env:
+          - GH_AUTH: ${{ vars.GH_AUTH }}
         run: npm test
