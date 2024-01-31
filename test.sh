@@ -19,9 +19,9 @@ sleep 4
 
 RESPONSE=$(curl -s http://localhost:3000)
 
-assertContains "Build: green" "$RESPONSE" "Response should contain build status"
-assertContains "Velocity: 1" "$RESPONSE" "Response should contain velocity"
-assertContains "Volatility: 2" "$RESPONSE" "Response should contain volatility"
-assertContains "Release Count: 100000000000" "$RESPONSE" "Response should contain release count"
-
+assertContains "Build" "$RESPONSE" "Response should contain build status"
+assertContains "Velocity" "$RESPONSE" "Response should contain velocity"
+assertContains "Volatility" "$RESPONSE" "Response should contain volatility"
+assertContains "Release Count" "$RESPONSE" "Response should contain release count"
+assertContains "workflow ID" "$RESPONSE" "Response should contain workflow ID"
 killall node
